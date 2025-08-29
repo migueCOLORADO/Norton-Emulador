@@ -4,7 +4,7 @@
 2. [Descripción](#descripción)
 3. [Funcionalidades](#funcionalidades)
 4. [Repositorio](#link-del-repositorio)
-8. [Autores](#autores-as-los-catadores)
+5. [Autores](#autores-as-los-catadores)
 
 ## Introduccion
 <div style = "text-align: justify;">
@@ -43,9 +43,9 @@ El emulador está construido alrededor de un archivo en python llamado [Simulado
 [Norton - Emulador](https://github.com/migueCOLORADO/Norton-Emulador.git)
 
 ## Autores as Los Catadores
-Miguel Ángel Colorado Castaño <br>
-Juan Manuel Hernandez Martelo <br>
-Julieth Jhosiris Daza Villada <br>
-Andres Eusse Chavarria <br>
-Yan Frank Ríos López
+**Miguel Ángel Colorado Castaño** <br>
+**Juan Manuel Hernandez Martelo** <br>
+**Julieth Jhosiris Daza Villada** <br>
+**Andres Eusse Chavarria** <br>
+**Yan Frank Ríos López**
 </div>
