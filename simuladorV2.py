@@ -237,9 +237,3 @@ if __name__ == "__main__":
             break
         else:
             print("| ERROR | Debe teclear un número válido (1 o 2). Intente nuevamente.")
-            
-        #else:
-        #print("| ERROR | Opcion invalida. Ejecutando simulacion por defecto...")
-        #print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
-        #simular_ejemplo()"
-            
