@@ -225,15 +225,21 @@ if __name__ == "__main__":
     print("| INFO | 2 => Simulacion del ejercicio (datos predefinidos)")
     print("-"*70)
     
-    modo = input("| PREGUNTA | Seleccione modo de operacion (Teclee 1 o 2) => ").strip()
-    
-    if modo == "1":
-        print("| ¡ALERTA! | Iniciando modo interactivo...")
-        menu_interactivo()
-    elif modo == "2":
-        print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
-        simular_ejemplo()
-    else:
-        print("| ERROR | Opcion invalida. Ejecutando simulacion por defecto...")
-        print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
-        simular_ejemplo()
+    while True:
+        modo = input("| PREGUNTA | Seleccione modo de operacion (Teclee 1 o 2) => ").strip()
+        if modo == "1":
+            print("| ¡ALERTA! | Iniciando modo interactivo...")
+            menu_interactivo()
+            break
+        elif modo == "2":
+            print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
+            simular_ejemplo()
+            break
+        else:
+            print("| ERROR | Debe teclear un número válido (1 o 2). Intente nuevamente.")
+            
+        #else:
+        #print("| ERROR | Opcion invalida. Ejecutando simulacion por defecto...")
+        #print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
+        #simular_ejemplo()"
+            
