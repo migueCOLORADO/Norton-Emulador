@@ -25,18 +25,17 @@ class SistemaASG:
         
         if clasificacion == "Alto":
             self.amenazas_altas.append(amenaza)
-            print(f"Amenaza {id_mision} clasificada como ALTA - Asignada a escuadrones elite")
+            print(f"| ¡ALERTA! | Amenaza {id_mision} clasificada como ALTA => Asignada a escuadrones elite")
         elif clasificacion == "Bajo":
             self.amenazas_bajas.append(amenaza)
-            print(f"Amenaza {id_mision} clasificada como BAJA - Asignada para reconocimiento")
+            print(f"| INFO | Amenaza {id_mision} clasificada como BAJA => Asignada para reconocimiento")
         elif clasificacion == "Falsa amenaza":
             amenaza.hora_archivado = amenaza.hora_recepcion
             self.historial.append(amenaza)
-            print(f"Amenaza {id_mision} archivada como FALSA AMENAZA")
+            print(f"| INFO | Amenaza {id_mision} archivada como FALSA AMENAZA")
     
     def procesar_tiempo_transcurrido(self, hora_actual: datetime):
         """Procesa las amenazas que han superado su tiempo limite y las mueve al historial"""
-        # Procesar amenazas altas (1 minuto)
         amenazas_altas_vencidas = []
         for amenaza in self.amenazas_altas:
             tiempo_transcurrido = hora_actual - amenaza.hora_recepcion
@@ -48,7 +47,6 @@ class SistemaASG:
             self.amenazas_altas.remove(amenaza)
             self.historial.append(amenaza)
         
-        # Procesar amenazas bajas (3 minutos)
         amenazas_bajas_vencidas = []
         for amenaza in self.amenazas_bajas:
             tiempo_transcurrido = hora_actual - amenaza.hora_recepcion
@@ -65,43 +63,51 @@ class SistemaASG:
         # Actualizar el estado antes de generar el informe
         self.procesar_tiempo_transcurrido(hora_actual)
         
-        print("\n" + "="*50)
-        print("INFORME DE AMENAZAS - AGENCIA DE SEGURIDAD GLOBAL")
-        print("="*50)
+        print("\n" + "="*60)
+        print("| ===ASG=== INFORME DE AMENAZAS | AGENCIA DE SEGURIDAD GLOBAL ===ASG=== |")
+        print("="*60)
         
-        print("\nLista de Amenazas Altas:")
+        print("\n| VERIFICACION | Analizando Lista de Amenazas Altas:")
+        print("-"*50)
         if self.amenazas_altas:
             for amenaza in self.amenazas_altas:
-                print(f"  {amenaza}")
+                print(f"| INFO | {amenaza}")
         else:
-            print("  No hay amenazas altas pendientes")
+            print("| ¡ALERTA! | No hay amenazas altas pendientes")
         
-        print("\nLista de Amenazas Bajas:")
+        print("\n| VERIFICACION | Analizando Lista de Amenazas Bajas:")
+        print("-"*50)
         if self.amenazas_bajas:
             for amenaza in self.amenazas_bajas:
-                print(f"  {amenaza}")
+                print(f"| INFO | {amenaza}")
         else:
-            print("  No hay amenazas bajas pendientes")
+            print("| ¡ALERTA! | No hay amenazas bajas pendientes")
         
-        print("\nHistorial:")
+        print("\n| VERIFICACION | Revisando Historial de Amenazas:")
+        print("-"*50)
         if self.historial:
             for amenaza in self.historial:
                 hora_archivado = amenaza.hora_archivado.strftime("%H:%M:%S")
-                print(f"  {amenaza.id_mision} ({amenaza.clasificacion}), {hora_archivado}")
+                print(f"| INFO | {amenaza.id_mision} ({amenaza.clasificacion}), {hora_archivado}")
         else:
-            print("  No hay amenazas en el historial")
+            print("| ¡ALERTA! | No hay amenazas en el historial")
         
-        print("="*50)
+        print("\n" + "="*60)
+        print("| ===ASG=== INFORME COMPLETADO ===ASG=== |")
+        print("="*60)
 
 def simular_ejemplo():
     """Simula el ejemplo proporcionado en el ejercicio"""
     sistema = SistemaASG()
     
+    print("\n" + "="*60)
+    print("| ===ASG=== SIMULACION DEL EJERCICIO OFICIAL ===ASG=== |")
+    print("="*60)
+    print("| INFO | Iniciando simulacion con datos predefinidos del ejercicio")
+    print("| INFO | Procesando 8 misiones de ejemplo (M1-M8)")
+    
     # Hora base para la simulacion
     hora_base = datetime.strptime("10:42:50", "%H:%M:%S")
-    
-    print("SIMULACION DEL EJEMPLO")
-    print("="*30)
     
     # Simular llegada de amenazas
     casos = [
@@ -114,6 +120,9 @@ def simular_ejemplo():
         ("M7", "Reconocimiento necesario", "Bajo", "10:44:37"),
         ("M8", "Amenaza inminente confirmada", "Alto", "10:44:43")
     ]
+    
+    print("\n| VERIFICACION | Procesando denuncias recibidas:")
+    print("-"*50)
     
     for id_mision, descripcion, clasificacion, hora_str in casos:
         # Simular la hora de recepcion
@@ -131,11 +140,11 @@ def simular_ejemplo():
             amenaza.hora_archivado = hora_recepcion
             sistema.historial.append(amenaza)
         
-        print(f"Recibida: {id_mision} ({clasificacion}) a las {hora_str}")
+        print(f"| INFO | Recibida => {id_mision} ({clasificacion}) a las {hora_str}")
     
     # Generar informe a las 10:45:00
     hora_informe = datetime.strptime("10:45:00", "%H:%M:%S")
-    print(f"\nGenerando informe a las {hora_informe.strftime('%H:%M:%S')}")
+    print(f"\n| ¡ALERTA! | Generando informe oficial a las {hora_informe.strftime('%H:%M:%S')}")
     sistema.generar_informe(hora_informe)
 
 def menu_interactivo():
@@ -143,28 +152,33 @@ def menu_interactivo():
     sistema = SistemaASG()
     
     while True:
-        print("\n" + "="*40)
-        print("SISTEMA ASG - MENU PRINCIPAL")
-        print("="*40)
-        print("1. Recibir nueva denuncia")
-        print("2. Generar informe")
-        print("3. Simular ejemplo del ejercicio")
-        print("4. Salir")
+        print("\n" + "="*60)
+        print("| ===ASG=== SISTEMA DE ANALISIS DE RIESGOS | MENU PRINCIPAL ===ASG=== |")
+        print("="*60)
+        print("| INFO | Opciones disponibles:")
+        print("| INFO | 1 => Recibir nueva denuncia")
+        print("| INFO | 2 => Generar informe de estado")
+        print("| INFO | 3 => Ejecutar simulacion del ejercicio")
+        print("| INFO | 4 => Salir del sistema")
+        print("-"*60)
         
-        opcion = input("\nSeleccione una opcion (1-4): ").strip()
+        opcion = input("| PREGUNTA | Seleccione una opcion (Teclee 1, 2, 3 o 4) => ").strip()
         
         if opcion == "1":
-            print("\n--- NUEVA DENUNCIA ---")
-            id_mision = input("ID de la mision (ej: M123): ").strip()
-            descripcion = input("Descripcion de la amenaza: ").strip()
+            print("\n" + "="*50)
+            print("| ===ASG=== RECEPCION DE NUEVA DENUNCIA ===ASG=== |")
+            print("="*50)
             
-            print("\nClasificaciones disponibles:")
-            print("1. Alto")
-            print("2. Bajo") 
-            print("3. Falsa amenaza")
+            id_mision = input("| PREGUNTA | Ingrese ID de la mision (ejemplo: M123) => ").strip()
+            descripcion = input("| PREGUNTA | Ingrese descripcion de la amenaza => ").strip()
+            
+            print("\n| INFO | Clasificaciones de riesgo disponibles:")
+            print("| INFO | 1 => Alto riesgo (archivado en 1 minuto)")
+            print("| INFO | 2 => Bajo riesgo (archivado en 3 minutos)")
+            print("| INFO | 3 => Falsa amenaza (archivado inmediatamente)")
             
             while True:
-                clasificacion_num = input("Seleccione clasificacion (1-3): ").strip()
+                clasificacion_num = input("| PREGUNTA | Seleccione clasificacion (Teclee 1, 2 o 3) => ").strip()
                 if clasificacion_num == "1":
                     clasificacion = "Alto"
                     break
@@ -175,11 +189,13 @@ def menu_interactivo():
                     clasificacion = "Falsa amenaza"
                     break
                 else:
-                    print("Opcion invalida. Intente nuevamente.")
+                    print("| ERROR | Opcion invalida. Intente nuevamente.")
             
             sistema.recibir_denuncia(id_mision, descripcion, clasificacion)
+            print("| ¡ALERTA! | Denuncia procesada exitosamente")
         
         elif opcion == "2":
+            print("\n| ¡ALERTA! | Generando informe de estado actual...")
             hora_actual = datetime.now()
             sistema.generar_informe(hora_actual)
         
@@ -187,27 +203,37 @@ def menu_interactivo():
             simular_ejemplo()
         
         elif opcion == "4":
-            print("Saliendo del sistema ASG...")
+            print("\n| ¡ALERTA! | Cerrando Sistema ASG...")
+            print("| INFO | Gracias por usar el Sistema de Analisis de Riesgos")
+            print("| INFO | Agencia de Seguridad Global - Mision cumplida")
             break
         
         else:
-            print("Opcion invalida. Intente nuevamente.")
+            print("| ERROR | Opcion invalida. Intente nuevamente.")
 
 if __name__ == "__main__":
-    print("SISTEMA DE ANALISIS DE RIESGOS")
-    print("AGENCIA DE SEGURIDAD GLOBAL (ASG)")
-    print("="*40)
+    print("\n" + "="*70)
+    print("| ===ASG=== SISTEMA DE ANALISIS DE RIESGOS ===ASG=== |")
+    print("| ===ASG=== AGENCIA DE SEGURIDAD GLOBAL ===ASG=== |")
+    print("="*70)
+    print("| INFO | Bienvenido al Sistema de Clasificacion de Amenazas")
+    print("| INFO | Este sistema procesa denuncias y clasifica riesgos automaticamente")
+    print("| INFO | Desarrollado para el control y seguimiento de amenazas de seguridad")
     
-    print("\nOpciones disponibles:")
-    print("1. Menu interactivo")
-    print("2. Ejecutar simulacion del ejemplo")
+    print("\n| INFO | Modos de operacion disponibles:")
+    print("| INFO | 1 => Menu interactivo (ingreso manual de denuncias)")
+    print("| INFO | 2 => Simulacion del ejercicio (datos predefinidos)")
+    print("-"*70)
     
-    modo = input("\nSeleccione modo (1-2): ").strip()
+    modo = input("| PREGUNTA | Seleccione modo de operacion (Teclee 1 o 2) => ").strip()
     
     if modo == "1":
+        print("| ¡ALERTA! | Iniciando modo interactivo...")
         menu_interactivo()
     elif modo == "2":
+        print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
         simular_ejemplo()
     else:
-        print("Opcion invalida. Ejecutando simulacion por defecto...")
+        print("| ERROR | Opcion invalida. Ejecutando simulacion por defecto...")
+        print("| ¡ALERTA! | Iniciando simulacion del ejercicio...")
         simular_ejemplo()
