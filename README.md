@@ -26,6 +26,6 @@ Implementar un sistema eficiente de análisis de riesgos y clasificación de ame
 ## Autores as Los Catadores
 Miguel Ángel Colorado Castaño <br>
 Juan Manuel Hernandez Martelo <br>
-Andres Eusse Chavarria
+Andres Eusse Chavarria <br>
 Yan Frank Ríos López
 </div>
