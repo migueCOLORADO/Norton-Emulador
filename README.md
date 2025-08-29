@@ -8,6 +8,7 @@
 
 ## Introduccion
 <div style = "text-align: justify;">
+Implementar un sistema eficiente de análisis de riesgos y clasificación de amenazas para identificar y asignar las denuncias recibidas por la Agencia de Seguridad Global (ASG) , priorizando las amenazas urgentes para los escuadrones élite, asignando misiones de reconocimiento a los otros escuadrones y archivando las amenazas falsas.
 
 **| ¡WARNING! | Seccion en construccion...**
 
@@ -25,5 +26,5 @@
 ## Autores as Los Catadores
 Miguel Ángel Colorado Castaño <br>
 Juan Manuel Hernandez Martelo <br>
-Andres Eusse Echavarria
+Andres Eusse Chavarria
 </div>
