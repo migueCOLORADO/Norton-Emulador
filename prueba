@@ -7,7 +7,6 @@
 #include <thread>
 using namespace std;
 
-// -------------------- Estructura --------------------
 struct Amenaza {
     string id;
     string descripcion;
@@ -16,7 +15,6 @@ struct Amenaza {
     chrono::time_point<chrono::system_clock> tiempoRecepcion;
 };
 
-// -------------------- Función para obtener hora actual --------------------
 string obtenerHora() {
     auto ahora = chrono::system_clock::now();
     time_t tiempoActual = chrono::system_clock::to_time_t(ahora);
@@ -25,12 +23,10 @@ string obtenerHora() {
     return hora;
 }
 
-// -------------------- Variables globales --------------------
 queue<Amenaza> colaAlto;
 queue<Amenaza> colaBajo;
 vector<Amenaza> historial;
 
-// -------------------- Función para ingresar amenaza --------------------
 void ingresarAmenaza() {
     Amenaza a;
     cout << "\nIngrese el ID de la misión (ej: M101): ";
@@ -56,7 +52,6 @@ void ingresarAmenaza() {
     }
 }
 
-// -------------------- Función para actualizar colas según tiempo --------------------
 void actualizarColas() {
     auto ahora = chrono::system_clock::now();
 
@@ -81,7 +76,7 @@ void actualizarColas() {
     }
 }
 
-// -------------------- Función para mostrar informe --------------------
+
 void informe() {
     actualizarColas();
 
