@@ -27,4 +27,5 @@ Implementar un sistema eficiente de análisis de riesgos y clasificación de ame
 Miguel Ángel Colorado Castaño <br>
 Juan Manuel Hernandez Martelo <br>
 Andres Eusse Chavarria
+Yan Frank Ríos López
 </div>
